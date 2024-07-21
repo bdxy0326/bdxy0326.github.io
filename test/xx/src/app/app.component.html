@@ -1,0 +1,17 @@
+<div class="main" *ngIf="!showMeteor">
+  <div id="header">
+    <app-code [code]="currentStyle"></app-code>
+  </div>
+  <div class="topic">
+    <div id="elapseClock" [innerHTML]="date">
+    </div>
+    <div class="ctopic"><span>我们，相识于 2014-10-12 @长春市高新区前进大街2699号，相爱于 2016-12-16，至今</span></div>
+  </div>
+  <div id="footer">
+    <app-world>
+    </app-world>
+  </div>
+</div>
+<app-meteor *ngIf="showMeteor" [message]="meteorMessage">
+</app-meteor>
+<router-outlet></router-outlet>
