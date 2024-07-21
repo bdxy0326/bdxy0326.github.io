@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="padding: 20px;">
+			<p>
+				请输入你的名字：
+				<input class="name" type="text">
+			</p>
+			<p>
+				请输入你深爱的那个Ta：
+				<input class="to-name" type="text">
+			</p>
+			<p>
+				请输入你们在一起的日期（年-月-日）
+				<input class="start-time" type="text">
+			</p>
+			<p>
+				<button onclick="ok()">确定</button>
+				(在生成页点击可播放/暂停音乐)
+			</p>
+		</div>
+		<script type="text/javascript">
+			function ok() {
+				var name = document.querySelector('.name').value; 
+				var to_name = document.querySelector('.to-name').value; 
+				var start_time = document.querySelector('.start-time').value; 
+				var url = 'zyq.html?name=' + encodeURIComponent(name) + '&to-name=' + encodeURIComponent(to_name) + '&start-time=' + encodeURIComponent(start_time); 
+				window.open(url);
+			}
+		</script>
+	</body>
+</html>

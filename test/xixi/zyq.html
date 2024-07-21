@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			* {margin: 0; padding: 0;}
+			html,body,#main {width: 100%; height: 100%; overflow: hidden;}
+			#main {display: flex; justify-content: center; align-items: center; text-align: center; cursor: pointer;}
+		</style>
+		<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="canvas_bg.js"></script>
+	</head>
+	<body>
+		<canvas id="c" style="position: absolute;z-index: -1;text-align: center;"></canvas>
+		<div id="main">
+			<div>
+				<h1 style="font-size: 48px;"><span class="name"></span> ❤ <span class="to-name"></span></h1> <br>
+				<div style="font-size: 18px;">
+					<span>我们彼此在对方的心里存在了 </span>
+					<br> 
+					<span class="sj">&emsp;</span>
+					<br>
+				</div> 
+				<br><br><br><br>
+				<audio id="bg" src="bg.mp3" loop hiddle></audio>
+			</div>
+		</div>
+		<div style="position: fixed; width: 100vw; bottom: 1.5em; text-align: center; color: #666;">
+			<span>I have a lot of love for you, but I don't <br/> know how to express it</span>
+		</div>
+		<script src="ca.js"></script>
+		<!-- <script src="../../sa.js"></script> -->
+		<script type="text/javascript">
+			// 计算时间  
+			function f5() {
+				// 计算名字
+				document.querySelector('.name').innerHTML = decodeURIComponent(p('name', ''));
+				document.querySelector('.to-name').innerHTML = decodeURIComponent(p('to-name', ''));
+				// 计算时间
+				// var startTime = new Date('2019-12-19');
+				var startTime = new Date(p('start-time', new Date()));
+				var endTime = new Date();	
+				// endTime = new Date(endTime.getTime() + (28800000));	// 强补码云获取当前时间少8小时的问题 
+				endTime = new Date(endTime.getTime());	// 强补码云获取当前时间少8小时的问题
+				var str = getSJC(startTime, endTime);
+				document.querySelector('.sj').innerHTML = str;
+			};
+			f5();
+			
+			// 一秒一次 
+			setInterval(function() {
+				f5();
+			}, 1000);
+			
+			// 播放声音
+			function paly_or_end() {
+				var audio = document.getElementById('bg');
+				if (audio.paused) {
+					audio.play(); //audio.play();// 这个就是播放  
+				} else {
+					audio.pause(); // 这个就是暂停
+				}
+			}
+			document.addEventListener('click', function() {
+				paly_or_end();
+			})
+			// setTimeout(function() {
+				
+			// }, 1000)
+			
+		</script>
+	</body>
+</html>
