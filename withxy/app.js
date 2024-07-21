@@ -5,9 +5,9 @@ music = ['imyours', 'AllForYou', 'Secrets','muse'];
 document.addEventListener('DOMContentLoaded', function(){
       var rootTime = document.querySelector("time");
 
-      document.querySelector("anni").textContent = `${(yourDate.getDate()>9)?yourDate.getDate():"0"+yourDate.getDate()}-${(yourDate.getMonth()>8)?(yourDate.getMonth()+1):"0"+(yourDate.getMonth()+1)}-${yourDate.getFullYear()}`;
+      document.querySelector("anni").textContent = `${yourDate.getFullYear()}年 ${(yourDate.getMonth()>8)?(yourDate.getMonth()+1):"0"+(yourDate.getMonth()+1)}月 ${(yourDate.getDate()>9)?yourDate.getDate():"0"+yourDate.getDate()}日`;
       
-      document.querySelector("date").textContent = Math.floor( Math.floor((new Date() - yourDate) / 1000) / 60 / 60 / 24)+" DAYS";
+      document.querySelector("date").textContent = Math.floor( Math.floor((new Date() - yourDate) / 1000) / 60 / 60 / 24)+" 天";
 
       function olock() {
             var today = new Date(),
