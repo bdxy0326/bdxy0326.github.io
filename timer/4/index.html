@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <!-- Copyright © 2020 by m@mcloc.cn -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刘娇宝宝with Her 哥哥</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        .wrap {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            background-image: url(img/39df30095e1bbe98a057ead4514e345.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .wrap-son {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            background: rgba(59, 59, 59, 0.3);
+        }
+
+        .jumbotron {
+            background: rgba(255, 255, 255, 0);
+            color: #f5f5f5;
+        }
+
+        .love {
+            color: #00BFFF;
+            margin: 0 20px;
+            line-height: 1.3;
+            font-weight: 300;
+        }
+
+        .hans-container {
+            position: fixed;
+            bottom: 0px;
+            width: 100%;
+            height: 120px;
+            z-index: 1;
+        }
+
+        .timer b {
+            font-size: 50px;
+        }
+
+        #s {
+            font-size: 80px;
+        }
+
+        #updatalove,
+        #to_comments {
+            margin: 0 10px;
+        }
+
+        .copy {
+            position: absolute;
+            bottom: 0;
+            color: #ffffff;
+            font-size: 12px;
+        }
+
+        .row > p {
+            font-size: 1.2em;
+            color: #FF00FF;
+        }
+        .love-son {
+            display: block;
+            line-height: 2.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="wrap-son">
+            <div class="container-fluid">
+                <div class="box">
+                    <div class="jumbotron text-center">
+                        <h1>十指相扣，故事开始</h1>
+                        <h3 class="timer">
+                            <div class="row">
+                                <b id="d"></b> 天 <b id="h"></b> 时 <b id="m"></b> 分
+                            </div>
+                            <div class="row">
+                                <b id="s"></b> 秒
+                            </div>
+                        </h3>
+                        <p>
+                            <a id="updatalove" class="btn btn-primary btn-lg" role="button">几行情书</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <h4 class="love text-center">
+                        <span class="love-son">
+                            你是这世间一切美好事情的前提，你是人间这不毛之地的高楼林立，你是海风渐暖吹过月亮的欢喜，你是春风得意。<br>
+                            星河璀璨，阳光干净，在人间所有美好的存在里，不论是活着或者死去，我总是最爱你<br>
+                            阳光正好，微风不燥，你也在笑，真想就这样伴你到老。<br>
+                            每时每刻宇宙无敌百无禁忌万夫莫敌超级喜欢你<br>
+                            别对我使用美人计 否则我会将计就计!!!<br>
+                            东南西北 E S W N 一生为你<br> 
+                        </span>
+                    </h4>
+                </div>
+                <div class="hitokoto" style="
+                    text-align: center;
+                    color: grey;
+                "><script type='text/javascript'>
+                $.get("https://v1.hitokoto.cn/",function(data,status){
+                    if (status == 'success'){
+                        $('.hitokoto').text(data.hitokoto+"By:"+data.from);
+                    }else{
+                        $('.hitokoto').text('获取出错！');
+                    }
+                });
+                </script>
+                </div>
+
+                <div class="row">
+                    <p class="copy text-center col-xs-12 col-sm-12">书未尽情，见侯面抒。</p>
+                </div>
+
+                <div id="hans-bolang"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- 计时器 -->
+    <script>
+        function timer() {
+            var start = new Date(2023, 03, 27, 21, 57, 00); // 2020.07.31 13:14:00
+            var t = new Date() - start;
+            var h = ~~(t / 1000 / 60 / 60 % 24);
+            if (h < 10) {
+                h = "0" + h;
+            }
+            var m = ~~(t / 1000 / 60 % 60);
+            if (m < 10) {
+                m = "0" + m;
+            }
+
+            var s = ~~(t / 1000 % 60);
+            if (s < 10) {
+                s = "0" + s;
+            }
+            document.getElementById('d').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
+            document.getElementById('h').innerHTML = h;
+            document.getElementById('m').innerHTML = m;
+            document.getElementById('s').innerHTML = s;
+        }
+        timer();
+        setInterval(timer, 1000);
+    </script>
+
+    <script>
+        var oComments = document.querySelector("#comments");
+        var oCommentsTop = Math.round(oComments.offsetTop);
+        //运动框架
+        function move() {
+            // 1. 关闭开启定时器;
+            clearInterval(timer);
+            var timer = setInterval(function () {
+                // 2. 计算速度;
+                var iNow = document.documentElement.scrollTop || document.body.scrollTop; //100
+                iNow = Math.round(iNow);
+                var speed = (oCommentsTop - iNow) / 10;
+                // 3. 速度取整;
+                if (speed > 0) {
+                    speed = Math.ceil(speed);
+                } else {
+                    speed = Math.floor(speed);
+                }
+                document.documentElement.scrollTop = document.body.scrollTop = iNow + speed + 1;
+                // 4. 终止条件;
+                if (iNow >= oCommentsTop) {
+                    clearInterval(timer);
+                }
+            }, 20)
+        }
+
+        to_comments.onclick = move;
+    </script>
+
+    
+
+    <!-- 底部波浪 -->
+    <script src="php/wave.php"></script>
+</body>
+
+</html>
